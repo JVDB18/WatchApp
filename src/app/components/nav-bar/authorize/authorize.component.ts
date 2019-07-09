@@ -27,9 +27,7 @@ token: string | number
     this.authService.storedToken$.subscribe(res => 
       {this.token = res 
         if(localStorage.getItem('token') !== null){
-        setTimeout(()=>{
           window.location.href= `${environment.trakt.baseUrl}/list/movies`
-        }, 3000)
         console.log(localStorage)
       }}
       )
