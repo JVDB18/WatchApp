@@ -10,7 +10,7 @@
             <h1>{{details.title}}<br></h1>
             <div class="text-info-backdrop">
                 <span class="info-text">
-                    {{details.year}} | Ratings {{details.rating}}/10    |   {{details.aired_episodes}} Aired episodes   |  {{details.network}}  |  Status: {{details.status}}  |  {{details.runtime}}'  |  <ng-container *ngFor="let items of details.genres">{{items}}  </ng-container></span>
+                    {{details.year}} | Ratings {{details.rating | number : '1.2-2'}}/10    |   {{details.aired_episodes}} Aired episodes   |  {{details.network}}  |  Status: {{details.status}}  |  {{details.runtime}}'  |  <ng-container *ngFor="let items of details.genres">{{items}}  </ng-container></span>
               </div>
               <app-add-button [data]="details" [format]="formatTrakt"></app-add-button>
             <br>

@@ -3,7 +3,6 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { CanActivate } from '@angular/router/src/utils/preactivation';
 
 @Injectable({
   providedIn: 'root'
