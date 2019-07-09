@@ -1,0 +1,10 @@
+<div class = "backdropContainer" *ngIf="backDropUrl && !carousel">
+  <img class= "backdrop" [src]='backDropUrl'>
+</div>
+<div class= "backdropContainer"*ngIf="!backDropUrl">
+</div>
+<div class = "backdropContainerCarousel" *ngIf="backDropUrl && carousel" [ngStyle]="css">
+    <img class= "backdropCarousel" [src]='backDropUrl'>
+  </div>
+  <div class= "backdropContainer"*ngIf="!backDropUrl">
+  </div>

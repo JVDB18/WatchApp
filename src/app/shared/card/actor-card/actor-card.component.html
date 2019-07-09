@@ -1,0 +1,10 @@
+
+ <div *ngIf="data" class="card-container">
+      <li>
+          <a (click)="navigateTo()" >  
+            <app-actor-poster [format]="formatPeople" [id]= "data.person.ids.tmdb"></app-actor-poster>
+            {{data.person.name}}<br/>
+              {{data.character}}
+            </a>
+      </li>
+    </div> 

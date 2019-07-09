@@ -1,0 +1,33 @@
+<div class="season-container">  
+  <div class="episodes">
+  <nav class="episode-nav">
+      <li *ngFor="let episode of seasonSummary.episodes, let i = index">
+        <a  routerLink="episode/{{episode.episode_number}}"> 
+          Episode {{episode.episode_number}}: {{episode.name}}
+          <br>
+        </a>
+      </li>
+    </nav>
+</div>
+<div class="season-details-container">
+  <div class="season-trailer-container"*ngIf="trailer.results.length !== 0 ">
+    <iframe width="560" height="315" [src]= "safeURL" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+<div class="season-trailer-container">
+    <div class="noTrailer" *ngIf="isTrailer === false"></div>
+  </div>
+<div class="season-poster" *ngIf="seasonSummary.poster_path !== underfined || seasonSummary.poster_path !== null">
+    <img *ngIf="posterUrl && isDisplay === true" src= "{{posterUrl}}">
+  </div>
+    <div *ngIf="isDisplay === false" class="season-no-poster"></div>
+    <div class="season-overview"*ngIf= "seasonSummary.overview === ''">
+      <h2>Season Summary</h2>
+      </div>
+<div class="season-overview" *ngIf="seasonSummary.overview !== ''">
+    <h2>{{seasonSummary.name}} Summary</h2>
+    <p>{{seasonSummary.overview}}</p> 
+</div>
+<router-outlet></router-outlet> 
+</div>
+</div>
+

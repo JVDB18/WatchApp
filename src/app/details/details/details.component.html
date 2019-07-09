@@ -1,0 +1,4 @@
+<div *ngIf="!detailed.aired_episodes">
+        <app-movie-details *ngIf="detailed" [isLoggedIn]="isLoggedIn"[related]="related" [details]="detailed" [cast]="cast"></app-movie-details>
+    </div>
+<app-show-details *ngIf="seasons" [isLoggedIn]="isLoggedIn"[seasons]="seasons" [cast]="cast" [details]="detailed" [related]="related"></app-show-details>

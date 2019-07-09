@@ -1,0 +1,17 @@
+<nz-carousel nzAutoPlay [nzAutoPlaySpeed] = "5000" [nzEffect]='fade' [nzDots]="false">
+    <div nz-carousel-content *ngFor="let item of response">
+      
+      <div *ngIf="item.show">
+          <app-back-drop [id]="item.show.ids.tmdb" [format]="formatShow" [carousel]="carousel"></app-back-drop>
+          <div class="carousel-text">
+            <p>Never miss a {{item.show.title}}'s episode again</p>
+          </div>
+      </div>
+      <div *ngIf="item.movie">
+        <app-back-drop [id]="item.movie.ids.tmdb" [format]="formatMovie" [carousel]="carousel"></app-back-drop>
+        <div class="carousel-text">
+          <p>Get your popcorn ready for {{item.movie.title}}</p>
+        </div>
+    </div>
+    </div>
+  </nz-carousel>

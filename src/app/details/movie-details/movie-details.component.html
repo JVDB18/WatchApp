@@ -1,0 +1,40 @@
+<div class="global-container">
+    <div class="backdrop">
+        <app-back-drop  *ngIf= "details" [format]="format" [id]="details.ids.tmdb"></app-back-drop>
+    </div>
+    <div class="details-container">
+        <div class="main-poster">
+            <app-movie-poster *ngIf="details" [format]="format" [id]= "details.ids.tmdb"></app-movie-poster>
+        </div>
+      <ng-container *ngIf="details">
+       <div class = "text-container">
+          <h1>{{details.title}}<br></h1>
+        <div class="addContainer">
+        </div>
+          <button (click)="addHistoryList()" *ngIf='isLoggedIn === true'> + Add to Watched</button> <button (click)="addWatchlist()" *ngIf='isLoggedIn === true'> + Add to WatchList</button><br>
+          
+        {{details.year}}<br>
+          {{details.ids.tmdb}}<br>
+          {{details.overview}}<br>
+        </div>
+      </ng-container>
+          <div class= "trailer">
+             <app-trailer *ngIf="details" [format]="format" [id]= "details.ids.tmdb"></app-trailer>
+          </div> 
+          <div class="related-cast-container">
+              <h2>Related movies</h2>
+              <div class="list-container" *ngIf= "related">
+                  <li>
+                        <app-card *ngFor= "let item of related" [formatTrakt]='formatTrakt' [format]="format" [data]="item"></app-card>
+                     </li>
+                </div>
+                    <h2>Cast</h2>
+                    <div class="list-container" *ngIf= "cast">
+                            <li>
+                                  <app-actor-card *ngFor= "let item of cast | paginate: { itemsPerPage: 5, currentPage: current }" [format]="person" [data]="item"></app-actor-card>
+                               </li>
+                               <br>
+                      </div>
+                      <pagination-controls (pageChange)="current = $event"></pagination-controls>
+      </div>  
+     </div>

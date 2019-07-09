@@ -1,0 +1,8 @@
+<h1>Shows WatchList</h1>
+<div class="global-list-container">
+  <div class="list-background">
+      <div class="list-container" *ngIf= "watchlist">
+        <app-card *ngFor= "let show of watchlist" [formatTrakt]="formatTrakt" [format]="format" [data]="show.show"></app-card>
+      </div>
+    </div>
+</div>

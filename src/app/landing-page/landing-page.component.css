@@ -1,0 +1,14 @@
+button.landing-title{
+    z-index: 1;
+    top: 50% !important;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.541);
+    left: 40%;
+    width: 20%;
+    border-radius: 50px;
+    border-color: transparent;
+}
+.carousel-container{
+    height: fit-content;
+    margin: 0 auto;
+}

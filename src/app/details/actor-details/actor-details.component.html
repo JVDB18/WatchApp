@@ -1,0 +1,43 @@
+<div class= "backdrop">
+  <div class = "backdropContainer" *ngIf="backdropUrl">
+    <img class= "backdrop" [src]='backdropUrl'>
+  </div>
+  <div class= "backdropContainer"*ngIf="!backdropUrl">
+    Loading
+  </div>
+</div>
+<div *ngIf="actor" class="details-container">
+  <div class="main-poster">
+      <app-actor-poster [format]= 'format' [id] = "actor.ids.tmdb"></app-actor-poster></div>
+      <div class="text-container">
+          <h1>
+            {{actor.name}}
+          </h1>
+          <h2>
+            Biography
+          </h2>
+          <p>Birthday and Birthplace {{actor.birthday}} in {{actor.birthplace}}</p>
+          <p *ngIf="actor.death !== null"> Died on {{actor.death}}</p>
+          <p>{{actor.biography}}</p></div>
+</div>
+<h2>Movies</h2>
+          <div *ngIf="pager.pages && pager.pages.length" class="pagination">
+              <div *ngIf="allMovies" class="list-container">
+                  <a (click)="setPage(pager.currentPage - 1, false)"><img class="previous-arrow"src="../../../assets/next.png"></a>
+               <div *ngFor="let item of pagedMovies" >
+                <app-card [format]="movieTmdbFormat" [data]="item.movie"  [formatTrakt]='movieFormatTrakt'></app-card>
+                <p>Playing {{item.character}}</p>
+              </div>
+              <a (click)="setPage(pager.currentPage + 1, false)"><img class= "next-arrow"src="../../../assets/next.png"></a>
+          </div>
+</div>
+<h2>Shows</h2>
+    <div *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <div *ngIf="allShows" class="list-container">
+        <a (click)="setPage(pager.currentPage - 1, true)"><img class="previous-arrow"src="../../../assets/next.png"></a>
+        <div *ngFor="let item of pagedShows" >
+            <app-card [format]="showTmdbFormat" [data]="item.show"  [formatTrakt]='showFormatTrakt'></app-card>
+            <p>Playing {{item.character}}</p>
+          </div>
+          <a (click)="setPage(pager.currentPage + 1, true)"><img class= "next-arrow"src="../../../assets/next.png"></a></div>
+</div>

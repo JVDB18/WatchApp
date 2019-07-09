@@ -1,0 +1,60 @@
+<div *ngIf="details && related && cast" class="global-container">
+  <div class="backdrop">
+      <app-back-drop *ngIf= "details" [format]="format" [id]="details.ids.tmdb"></app-back-drop>
+    </div>
+    <div *ngIf="details" class="details-container">
+      <div class="main-poster">
+          <app-movie-poster *ngIf="details" [format]="format" [id]= "details.ids.tmdb"></app-movie-poster>
+        </div>
+      <div class="text-container">
+            <h1>{{details.title}}<br></h1>
+            <div class="text-info-backdrop">
+                <span class="info-text">Ratings {{details.rating}}/10    |   {{details.aired_episodes}} Aired episodes   |  {{details.network}}  |  Status: {{details.status}}  |  {{details.runtime}}'  |  <ng-container *ngFor="let items of details.genres">{{items}}  </ng-container></span>
+              </div>
+            <button (click)="addHistoryList()" *ngIf='isLoggedIn === true'> + Add to Watched</button> 
+            <button (click)="addWatchlist()" *ngIf='isLoggedIn === true'> + Add to WatchList</button>
+            <br>
+            {{details.year}}<br>
+            {{details.ids.tmdb}}<br>
+            {{details.overview}}<br>
+        </div>
+        <div class="trailer">
+            <app-trailer *ngIf="details.trailer !==null" [format]="format" [id]= "details.ids.tmdb"></app-trailer>
+          </div>
+        <div *ngIf= "details.ids.tmdb === null || details.ids.tmdb === undefined || details.trailer === null "class= 'noTrailer'></div>
+    </div>
+    <div class = "season" *ngIf='seasons'>
+        <nav class = "season-nav" *ngIf="isOneSeason === true">
+            <li *ngFor= "let item of seasons; let i = index">
+                <a routerLink="season/1/{{details.ids.tmdb}}/{{details.ids.trakt}}" routerLinkActive="router-link-active" >Season {{i+1}}</a>
+            </li>
+        </nav>
+        <nav class = "season-nav" *ngIf="isOneSeason === false">
+            <li *ngFor= "let item of seasons; let i = index">
+                <a routerLink="season/{{i}}/{{details.ids.tmdb}}/{{details.ids.trakt}}" routerLinkActive="router-link-active" >Season {{i}}</a>
+            </li>
+        </nav>
+      </div>
+        <router-outlet></router-outlet>
+      
+    <div class="related-cast-container">
+      <h2>You may also like</h2>
+        <div class="list-container">
+            <li>
+                  <app-card *ngFor= "let item of related" [formatTrakt]='formatTrakt' [format]="format" [data]="item"></app-card>
+               </li>
+          </div>
+          <h2>With</h2>
+        </div>
+        <div *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <div *ngIf='cast' class="list-container">
+                <a (click)="setPage(pager.currentPage - 1, true)"><img class="previous-arrow"src="../../../assets/next.png"></a>
+                <div *ngFor= "let item of pagedCast">
+                    <li>
+                          <app-actor-card  [formatTrakt]="traktPeople" [format]="person" [data]="item"></app-actor-card>
+                       </li>
+                      </div>
+                       <a (click)="setPage(pager.currentPage + 1, true)"><img class= "next-arrow"src="../../../assets/next.png"></a></div>
+                       
+              </div>
+            </div>

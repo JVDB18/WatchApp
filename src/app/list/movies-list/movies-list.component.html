@@ -1,0 +1,21 @@
+<h1>Popular and Trending movies</h1>
+<div class="global-list-container">
+        <div class="trendingMovieContainer" *ngIf="trendingMovies && popularMovies">
+                <h2>Trending</h2>
+                <div class="list-container">
+                   <li *ngFor= "let trendingMovie of trendingMovies" >
+                         <app-card [formatTrakt]="formatTrakt" [format]="format" [data]="trendingMovie.movie"></app-card>
+                   </li></div>
+                   <a (click)= "fetchOnClickTrending(false)"><img class="previous-arrow"src="../../../assets/next.png"></a>
+                   <a (click)= "fetchOnClickTrending(true)"><img class= "next-arrow"src="../../../assets/next.png"></a>
+             </div>
+             <div class="popularMovieContainer" *ngIf="popularMovies && trendingMovies">
+                 <h2>Popular</h2>
+                 <div class="list-container">
+                     <li *ngFor= "let popularMovie of popularMovies" >
+                         <app-card [format]= "format" [formatTrakt]= "formatTrakt" [data]="popularMovie"></app-card>
+                       </li></div>
+                       <a (click)= "fetchOnClickPopular(false)"><img class="previous-arrow"src="../../../assets/next.png"></a>
+                       <a (click)= "fetchOnClickPopular(true)"><img class= "next-arrow"src="../../../assets/next.png"></a>
+             </div>
+            </div>

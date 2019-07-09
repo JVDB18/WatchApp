@@ -1,0 +1,9 @@
+<div>
+  <img *ngIf="noPath === false && posterImageUrl" [src]='posterImageUrl'>
+</div>
+<div *ngIf="noPath === true || !posterImageUrl" class="noPoster">
+  <ng-template #indicatorTemplate>
+    <i nz-icon type="loading" style="font-size: 24px; color: white;"></i> 
+  </ng-template><nz-spin nzSimple [nzIndicator]="indicatorTemplate"> 
+  </nz-spin>
+</div>

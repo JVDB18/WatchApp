@@ -1,0 +1,11 @@
+<div class="first-nav-container">
+    <a routerLink="/"><h1 class="logo">WatchApp</h1></a>
+    <nav>
+        <a *ngIf= "isLoggedIn === false" (click)="getAuth()">Sign in |</a>
+        <a routerLink="/list/movies">Discover |</a>
+        <a *ngIf="isLoggedIn === true" routerLink="/watched/movies"> Watched  |</a>
+        <a *ngIf= "isLoggedIn === true " routerLink="/watchlist/movies"> Watchlist  |</a>
+        <a *ngIf= "isLoggedIn === true" class ="logout"(click)="loggedOut()">Disconnect    
+          <app-log-in *ngIf="isLoggedIn === true"></app-log-in></a>
+      </nav>
+</div>
