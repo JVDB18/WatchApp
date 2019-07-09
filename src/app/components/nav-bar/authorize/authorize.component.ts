@@ -27,7 +27,7 @@ token: string | number
     this.authService.storedToken$.subscribe(res => 
       {this.token = res 
         if(localStorage.getItem('token') !== null){
-          window.location.href= `${environment.trakt.redirectUri}/list/movies`
+          window.location.href= `${environment.trakt.redirectUri}`
         console.log(localStorage)
       }}
       )
