@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TraktService } from 'src/app/trakt.service';
 import { Movie } from 'src/app/movies';
 import { Person } from 'src/app/person';
-import { NzNotificationService } from 'ng-zorro-antd';
+import { PaginaterService } from 'src/app/paginater.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -13,97 +13,33 @@ export class MovieDetailsComponent implements OnInit {
 
   @Input() details : Movie
   @Input() related : Movie[]
-  @Input() cast : Person
+  @Input() cast : Person[]
   @Input() isLoggedIn: boolean
   format: string = 'movie'
   rand: number
-  allpeople
   formatTrakt: string = 'movies'
+  pager: any = {}
+  pagedCast: any[];
 
-  constructor(private traktService : TraktService, private notification: NzNotificationService) { 
+  constructor(private pagerService: PaginaterService) { 
       }
       
   ngOnInit() {
     this.getRandom(5)
     console.log(this.related)
+    this.setPage(1)
   }
   ngOnChanges(): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
-    this.getRelated();
-    this.getCast();
+    this.setPage(1)
   }
   getRandom(max){
     return this.rand =  Math.floor(Math.random() * Math.floor(max))
   }
-  addWatchlist(){
-    let body: Movie[] | {} = {
-      "movies": [
-        {"title" : `${this.details.title}`,
-          "year": `${this.details.year}`,
-          "ids": {
-          "trakt": `${this.details.ids.trakt}`,
-          "slug": `${this.details.ids.slug}`,
-          "imdb": `${this.details.ids.imdb}`,
-          "tmdb": `${this.details.ids}`  
-          }}
-      ]
-    }
-    this.traktService.addToList('watchlist', body).subscribe(res => console.log(res))
-    this.notification.blank(
-      'Succesfully added',
-      'You have added 1 item to your Watchlist',{
-        nzStyle: {
-          width: '600px',
-          marginLeft: '-265px',
-          backgroundColor: '#000000ad'
-        },
-        nzClass: 'test-class'
-      }
-    );
-    console.log("done")
-    console.log(this.details)
-    console.log(body)
-  }
-  addHistoryList(){
-    let body: Movie[] | {} = {
-      "movies": [
-        {"title" : `${this.details.title}`,
-          "year": `${this.details.year}`,
-          "ids": {
-          "trakt": `${this.details.ids.trakt}`,
-          "slug": `${this.details.ids.slug}`,
-          "imdb": `${this.details.ids.imdb}`,
-          "tmdb": `${this.details.ids}`  
-          }}
-      ]
-    }
-    
-    this.traktService.addToList('history', body).subscribe(res => console.log(res))
-    this.notification.blank(
-      'Succesfully added',
-      'You have added 1 item to your Watched List',{
-        nzStyle: {
-          width: '600px',
-          marginLeft: '-265px',
-          backgroundColor: '#000000ad'
-        },
-        nzClass: 'test-class'
-      }
-    );
+  setPage(page: number){
+      this.pager = this.pagerService.getPager(this.cast.length, page, 4);
+      this.pagedCast= this.cast.slice(this.pager.startIndex, this.pager.endIndex +1)
+      console.log(this.pagedCast)
+   
   }
   
-  getRelated(){
-    this.traktService.getRelatedById(this.formatTrakt, this.details.ids.slug).pipe().subscribe(res => {
-      this.related = res;
-      console.log(this.related)
-    })}
-    getCast(){
-      this.traktService.getActors(this.formatTrakt, this.details.ids.slug, 1).pipe().subscribe(res => {
-        this.allpeople = res;
-        console.log(this.allpeople)
-        this.cast = this.allpeople.body.cast
-        console.log(this.cast)
-      })
-    }
 }

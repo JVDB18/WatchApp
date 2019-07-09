@@ -51,7 +51,7 @@ allShows
     }
   }
   getActorById(){
-    this.traktService.getActorById(this.slug).subscribe(res => {this.actor = res.body
+    this.traktService.getActorById(`${this.slug}?extended=full`).subscribe(res => {this.actor = res.body
     console.log(this.actor)
     this.tmdbService.getTaggetImg(this.actor.ids.tmdb).subscribe(res => {
       this.taggedImg = res

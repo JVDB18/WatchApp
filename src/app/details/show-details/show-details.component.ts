@@ -32,7 +32,7 @@ pagedCast: any[];
 
 
 
-  constructor(private traktService: TraktService, private notification: NzNotificationService, private pagerService: PaginaterService) { }
+  constructor(private pagerService: PaginaterService) { }
 
   ngOnInit() {
     this.getRandom(5)  
@@ -61,58 +61,5 @@ pagedCast: any[];
 
   getRandom(max){
     return this.rand =  Math.floor(Math.random() * Math.floor(max))
-  }
-  
-  addWatchlist(){
-    let body: Show[] | {} ={
-      "shows": [
-        {"title" : `${this.details.title}`,
-          "year": `${this.details.year}`,
-          "ids": {
-          "trakt": `${this.details.ids.trakt}`,
-          "slug": `${this.details.ids.slug}`,
-          "imdb": `${this.details.ids.imdb}`,
-          "tmdb": `${this.details.ids}`  
-          }}
-      ]
-    }
-    this.traktService.addToList('watchlist', body).subscribe(res => console.log(res))
-    this.notification.blank(
-      'Succesfully added',
-      'You have added 1 item to your Watchlist',{
-        nzStyle: {
-          width: '600px',
-          marginLeft: '-265px',
-          backgroundColor: '#000000ad'
-        },
-        nzClass: 'test-class'
-      })
-    console.log(body)
-  }
-  addHistoryList(){
-    let body: Show[] | {} ={
-      "shows": [
-        {"title" : `${this.details.title}`,
-          "year": `${this.details.year}`,
-          "ids": {
-          "trakt": `${this.details.ids.trakt}`,
-          "slug": `${this.details.ids.slug}`,
-          "imdb": `${this.details.ids.imdb}`,
-          "tmdb": `${this.details.ids}`  
-          }}
-      ]
-    }
-  
-    this.traktService.addToList('history', body).subscribe(res => console.log(res))
-    this.notification.blank(
-      'Succesfully added',
-      'You have added 1 item to your Watched List',{
-        nzStyle: {
-          width: '600px',
-          marginLeft: '-265px',
-          backgroundColor: '#000000ad'
-        },
-        nzClass: 'test-class'
-      })
   }
   }

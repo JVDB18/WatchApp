@@ -8,19 +8,30 @@
         </div>
       <ng-container *ngIf="details">
        <div class = "text-container">
-          <h1>{{details.title}}<br></h1>
+          <h1>{{details.title}}
+              {{details.year}}<br></h1>
         <div class="addContainer">
         </div>
-          <button (click)="addHistoryList()" *ngIf='isLoggedIn === true'> + Add to Watched</button> <button (click)="addWatchlist()" *ngIf='isLoggedIn === true'> + Add to WatchList</button><br>
-          
-        {{details.year}}<br>
-          {{details.ids.tmdb}}<br>
+          <app-add-button [data]="details" [format]="formatTrakt"></app-add-button><br>
+          <br>
           {{details.overview}}<br>
         </div>
       </ng-container>
           <div class= "trailer">
              <app-trailer *ngIf="details" [format]="format" [id]= "details.ids.tmdb"></app-trailer>
           </div> 
+          <h2>With</h2>
+          <div *ngIf="pager.pages && pager.pages.length" class="pagination">
+              <div *ngIf='cast' class="list-container">
+                  <a (click)="setPage(pager.currentPage - 1, true)"><img class="previous-arrow"src="../../../assets/next.png"></a>
+                  <div *ngFor= "let item of pagedCast">
+                      <li>
+                            <app-actor-card  [formatTrakt]="traktPeople" [format]="person" [data]="item"></app-actor-card>
+                         </li>
+                        </div>
+                         <a (click)="setPage(pager.currentPage + 1, true)"><img class= "next-arrow"src="../../../assets/next.png"></a></div>
+                         
+                </div>
           <div class="related-cast-container">
               <h2>Related movies</h2>
               <div class="list-container" *ngIf= "related">
@@ -28,13 +39,5 @@
                         <app-card *ngFor= "let item of related" [formatTrakt]='formatTrakt' [format]="format" [data]="item"></app-card>
                      </li>
                 </div>
-                    <h2>Cast</h2>
-                    <div class="list-container" *ngIf= "cast">
-                            <li>
-                                  <app-actor-card *ngFor= "let item of cast | paginate: { itemsPerPage: 5, currentPage: current }" [format]="person" [data]="item"></app-actor-card>
-                               </li>
-                               <br>
-                      </div>
-                      <pagination-controls (pageChange)="current = $event"></pagination-controls>
       </div>  
      </div>

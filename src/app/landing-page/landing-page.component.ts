@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Show } from '../show';
 import { Movie } from '../movies';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,19 +14,29 @@ import { Movie } from '../movies';
 })
 export class LandingPageComponent implements OnInit, OnDestroy {
 
-  constructor(private traktService: TraktService, private tmdbService: TmdbService, private route: Router) { }
+  constructor(private traktService: TraktService, private authService: AuthService, private router: Router) { }
 
 private subscription : Subscription = new Subscription();
 
 response = []
+isLoggedIn: boolean
 
   ngOnInit() {
+    this.authService.isLog$.subscribe(res => this.isLoggedIn = res)
     this.getTrend('shows');
     this.getTrend('movies')
   }
   ngOnDestroy(){
 
   }
+getAuth(){
+  if(this.isLoggedIn === false){
+    this.authService.getAuthentication();
+  }
+  else{
+    this.router.navigate(["/list/movies"])
+  }
+}
 getTrend(format){
   this.traktService.getList(1, 2, format, 'trending').subscribe(res => {
     for (let i = 0; i < res.body.length; i++){

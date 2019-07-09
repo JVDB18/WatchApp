@@ -4,8 +4,8 @@
   <h2>Search Results</h2>
   <div class="list-container">
       <li *ngFor="let data of datas$ | async" >
-        <app-card (click)="reset()" *ngIf="data.type !== show" [format]= "movieTmdb" [formatTrakt]= "formatMovie" [data]= data.movie ></app-card>
-        <app-card (click)="reset()"[formatTrakt] = "formatShow" [format]= "showTmdb"[data]= data.show></app-card>
+        <app-card  *ngIf="data.type !== show" [format]= "movieTmdb" [formatTrakt]= "formatMovie" [data]= data.movie></app-card>
+        <app-card [formatTrakt] = "formatShow" [format]= "showTmdb"[data]= data.show></app-card>
       </li>
   </div>
 </div>

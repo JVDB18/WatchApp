@@ -16,7 +16,7 @@ import { AuthService } from 'src/app/auth.service';
 export class DetailsComponent implements OnInit, OnDestroy {
   private subscription: Subscription= new Subscription();
   id : string | number
-  detailed: Movie[] | Show[]
+  detailed: any
   related: Movie[] | Show[]
   cast : Cast
   allpeople

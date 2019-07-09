@@ -26,7 +26,6 @@
                   <a (click)="setPage(pager.currentPage - 1, false)"><img class="previous-arrow"src="../../../assets/next.png"></a>
                <div *ngFor="let item of pagedMovies" >
                 <app-card [format]="movieTmdbFormat" [data]="item.movie"  [formatTrakt]='movieFormatTrakt'></app-card>
-                <p>Playing {{item.character}}</p>
               </div>
               <a (click)="setPage(pager.currentPage + 1, false)"><img class= "next-arrow"src="../../../assets/next.png"></a>
           </div>

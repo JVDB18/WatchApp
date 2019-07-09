@@ -1,6 +1,6 @@
 <div *ngIf="response.length === 4" class="carousel-container">
     <app-carousel [response]= 'response'></app-carousel>
-    <button class="landing-title">
+    <button class="landing-title" (click)="getAuth()">
         <h1>Start now</h1>
     </button>
   </div>

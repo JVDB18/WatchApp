@@ -1,8 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { TraktService } from 'src/app/trakt.service';
 import { Movie } from 'src/app/movies';
 import { Observable, Subject, empty } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Router, NavigationStart } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-search',
@@ -18,7 +20,13 @@ showTmdb: string = "tv"
 movieTmdb: string ="movie"
 private searchTerms = new Subject<string>();
 
-  constructor(private traktService: TraktService) { }
+  constructor(private traktService: TraktService, router: Router) {
+    router.events.subscribe(event => {
+      if(event instanceof NavigationStart){
+        this.reset();
+      }
+    })
+   }
 search(term: string) : void {
   this.searchTerms.next(term)
 }

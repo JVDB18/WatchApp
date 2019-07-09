@@ -1,5 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
-
+/* Modal */
+.ant-modal-header{
+    height: 0px;
+    padding: 0px;
+    border-bottom: none;
+}
+.ant-modal-body {
+    padding: 24px;
+    padding-top: 48px;
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    letter-spacing: 0.3em;
+    border-radius: 4px, 4px, 0px, 0px;
+}
+.ant-modal-close-x{
+    color: rgba(255, 255, 255, 0.74);
+}
+.ant-modal-footer{
+    height: 0px;
+    border-top: none;
+}
+/* Header */
 div.header-container{
     width: 100%;
     display: flex;
@@ -7,7 +33,9 @@ div.header-container{
     justify-content: center;
     margin: 0 auto;
 }
-/* Titles */
+/* Fonts */
+body{
+    letter-spacing: 0.2em;}
 h1, h2, h3{
     max-width: 100%;
     margin: 0 !important;
@@ -40,8 +68,12 @@ span.info-text{
 /* container */
 .card-container{
     width: 200px;
+    height: 300px;
     margin: 40px;
     text-align: center;
+}
+.actor-poster-container{
+    height: 300px;
 }
 div.app-season{
     width: 100%;
@@ -197,6 +229,9 @@ font-size: 15px;
 }
 nav, nav.second-nav{
     max-width: 100%;
+}
+nav p {
+    padding: 0px;
 }
 nav a, h1.logo{
     padding: 10px 10px 10px 10px;

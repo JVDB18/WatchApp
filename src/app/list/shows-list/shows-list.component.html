@@ -1,5 +1,14 @@
    <h1>Popular and Trending Shows</h1>
    <div class="global-list-container">
+      <div class="trendingShow" *ngIf="popularShows && trendingShows">
+          <h2>Trending</h2>
+          <div class="list-container">
+              <li *ngFor= "let trendingShow of trendingShows" >
+                  <app-card [formatTrakt]='formatTrakt' [format]="format" [data]="trendingShow.show"></app-card>
+                </li></div>
+            <a (click)= "fetchOnClickTrending(false)"><img class="previous-arrow"src="../../../assets/next.png"></a>
+            <a (click)= "fetchOnClickTrending(true)"><img class= "next-arrow"src="../../../assets/next.png"></a>
+      </div>
       <div class="popularShow" *ngIf="popularShows && trendingShows">
          <h2>Popular</h2>
           <div class="list-container">
@@ -10,13 +19,4 @@
       <a (click)= "fetchOnClickPopular(false)"><img class="previous-arrow"src="../../../assets/next.png"></a>
       <a (click)= "fetchOnClickPopular(true)"><img class= "next-arrow"src="../../../assets/next.png"></a>
     </div>
-      <div class="trendingShow" *ngIf="popularShows && trendingShows">
-          <h2>Trending</h2>
-          <div class="list-container">
-              <li *ngFor= "let trendingShow of trendingShows" >
-                  <app-card [formatTrakt]='formatTrakt' [format]="format" [data]="trendingShow.show"></app-card>
-                </li></div>
-            <a (click)= "fetchOnClickTrending(false)"><img class="previous-arrow"src="../../../assets/next.png"></a>
-            <a (click)= "fetchOnClickTrending(true)"><img class= "next-arrow"src="../../../assets/next.png"></a>
-      </div>
     </div>

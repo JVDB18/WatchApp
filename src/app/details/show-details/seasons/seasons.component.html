@@ -16,7 +16,7 @@
 <div class="season-trailer-container">
     <div class="noTrailer" *ngIf="isTrailer === false"></div>
   </div>
-<div class="season-poster" *ngIf="seasonSummary.poster_path !== underfined || seasonSummary.poster_path !== null">
+<div class="season-poster" *ngIf="seasonSummary.poster_path !== undefined || seasonSummary.poster_path !== null">
     <img *ngIf="posterUrl && isDisplay === true" src= "{{posterUrl}}">
   </div>
     <div *ngIf="isDisplay === false" class="season-no-poster"></div>

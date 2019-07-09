@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-authorize',
@@ -27,7 +28,7 @@ token: string | number
       {this.token = res 
         if(localStorage.getItem('token') !== null){
         setTimeout(()=>{
-          window.location.href= "http://localhost:4200"
+          window.location.href= `${environment.trakt.baseUrl}/list/movies`
         }, 3000)
         console.log(localStorage)
       }}
