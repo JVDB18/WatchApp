@@ -4,7 +4,6 @@ import { Movie } from 'src/app/movies';
 import { Observable, Subject, empty } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Router, NavigationStart } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-search',
@@ -13,7 +12,7 @@ import { routerNgProbeToken } from '@angular/router/src/router_module';
 })
 export class SearchComponent implements OnInit {
 datas$: Observable<Movie[]>
-show: boolean = false
+toggle: boolean = false
 formatMovie: string= "movies"
 formatShow: string= "shows"
 showTmdb: string = "tv"
@@ -41,20 +40,20 @@ observedSearch(){
   this.datas$ = this.searchTerms.pipe(
     debounceTime(100),
     distinctUntilChanged(),
-    switchMap((term: string) => 
+    switchMap((term: string) =>
         this.traktService.search(term)
     )
   )
-  
+
   this.searchTerms.subscribe( res => {
     if(res !== '') {
-      this.show = true
+      this.toggle = true
     }
     else {
-      this.show = false
+      this.toggle = false
     }
-    
-  console.log(this.show)
+
+  console.log(this.toggle)
   })
 }
 }

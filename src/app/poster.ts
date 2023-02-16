@@ -1,4 +1,3 @@
-import { GenericBrowserDomAdapter } from '@angular/platform-browser/src/browser/generic_browser_adapter';
 
 export interface Tmdb{
 /*     adult: boolean,

@@ -1,8 +1,8 @@
   <div *ngIf="data" class="card-container">
-        <a (click)="showModal()" > 
+        <a (click)="navigateTo()" >
           <app-movie-poster *ngIf="data" [format]="format" [id]= "data.ids.tmdb"></app-movie-poster>
           <p>{{data.title}} {{data.year}}</p>
-         
+
         </a>
         <nz-modal
       [(nzVisible)]="isVisible"
@@ -16,13 +16,13 @@
       <ng-template #modalTitle>
       </ng-template>
 
-      <ng-template #modalContent> 
+      <ng-template #modalContent>
           <app-movie-poster *ngIf="data" [format]="format" [id]= "data.ids.tmdb"></app-movie-poster>
           <p>{{data.title}} {{data.year}}</p>
           <p>{{data.rating}}</p>
           <app-add-button [data]="data" [format]="formatTrakt"></app-add-button>
           <button (click)="navigateTo()">View details</button>
-        </ng-template> 
+        </ng-template>
 
       <ng-template #modalFooter>
       </ng-template>

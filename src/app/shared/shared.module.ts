@@ -6,7 +6,6 @@ import { MoviePosterComponent } from './medias/movie-poster/movie-poster.compone
 import { BackDropComponent } from './medias/back-drop/back-drop.component';
 import { TrailerComponent } from './medias/trailer/trailer.component';
 import { ActorPosterComponent } from './medias/actor-poster/actor-poster.component';
-import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { ActorCardComponent } from './card/actor-card/actor-card.component';
 import { AddButtonComponent } from './add-button/add-button.component';
 
@@ -14,8 +13,7 @@ import { AddButtonComponent } from './add-button/add-button.component';
   declarations: [CardComponent, MoviePosterComponent, BackDropComponent, TrailerComponent, ActorPosterComponent, ActorCardComponent, AddButtonComponent, ],
   imports: [
     CommonModule,
-    RouterModule,
-    NgZorroAntdModule,
+    RouterModule
   ],
   exports: [CardComponent, MoviePosterComponent, BackDropComponent, TrailerComponent, ActorPosterComponent, ActorCardComponent, AddButtonComponent]
 })

@@ -1,6 +1,6 @@
-<p class="input-container"> <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Search" /> </p> 
+<p class="input-container"> <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Search" /> </p>
 <!-- <button class="searchButton" (click)="reset(); searchBox.value = ''" >reset</button> -->
-<div *ngIf="show === true">
+<div *ngIf="toggle == true">
   <h2>Search Results</h2>
   <div class="list-container">
       <li *ngFor="let data of datas$ | async" >

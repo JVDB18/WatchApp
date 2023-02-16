@@ -1,9 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { TraktService } from 'src/app/trakt.service';
-import { Router } from '@angular/router';
 import { Show } from 'src/app/show';
 import { Person } from 'src/app/person';
-import { NzNotificationService } from 'ng-zorro-antd';
 import { PaginaterService } from 'src/app/paginater.service';
 
 @Component({
@@ -20,7 +17,7 @@ rand: number
 allpeople : Person
 @Input() details: Show
 @Input() related: Show
-@Input() cast 
+@Input() cast
 selectedCast = [];
 person: string = 'person'
 currentPage: number = 1
@@ -35,7 +32,7 @@ pagedCast: any[];
   constructor(private pagerService: PaginaterService) { }
 
   ngOnInit() {
-    this.getRandom(5)  
+    this.getRandom(5)
     console.log(this.details)
     console.log(this.seasons)
     console.log(this.cast)
@@ -48,7 +45,7 @@ pagedCast: any[];
       this.isOneSeason = false
       this.setPage(1)
     }
-  }  
+  }
   ngOnChanges(){
     this.setPage(1)
   }
@@ -56,7 +53,7 @@ pagedCast: any[];
       this.pager = this.pagerService.getPager(this.cast.length, page, 4);
       this.pagedCast= this.cast.slice(this.pager.startIndex, this.pager.endIndex +1)
       console.log(this.pagedCast)
-   
+
   }
 
   getRandom(max){

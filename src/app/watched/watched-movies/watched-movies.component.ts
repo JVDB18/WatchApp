@@ -21,7 +21,7 @@ export class WatchedMoviesComponent implements OnInit {
   }
   getWatched(path, format){
     this.traktService.getSync(path, format).pipe(tap()).subscribe(res => {
-      this.movies = res; 
-      console.log(this.movies)})
+      this.movies = res;
+    })
   }
 }

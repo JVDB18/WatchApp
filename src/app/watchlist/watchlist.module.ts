@@ -5,15 +5,14 @@ import { ShowsWatchlistComponent } from './shows-watchlist/shows-watchlist.compo
 import { MoviesWatchlistComponent } from './movies-watchlist/movies-watchlist.component';
 import { SharedModule } from '../shared/shared.module';
 import { WatchListRoutingModuleModule } from './watch-list-routing-module/watch-list-routing-module.module';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+
 
 @NgModule({
   declarations: [WatchlistComponent, ShowsWatchlistComponent, MoviesWatchlistComponent],
   imports: [
     CommonModule,
     SharedModule,
-    WatchListRoutingModuleModule,
-    NgZorroAntdModule,
+    WatchListRoutingModuleModule
   ],
   exports: [WatchlistComponent, ShowsWatchlistComponent, MoviesWatchlistComponent]
 })

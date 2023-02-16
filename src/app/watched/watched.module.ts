@@ -5,15 +5,13 @@ import { WatchedComponent } from './watched/watched.component';
 import { WatchedMoviesComponent } from './watched-movies/watched-movies.component';
 import { WatchedShowsComponent } from './watched-shows/watched-shows.component';
 import { SharedModule } from '../shared/shared.module';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 @NgModule({
   declarations: [WatchedComponent, WatchedMoviesComponent, WatchedShowsComponent],
   imports: [
     CommonModule,
     WatchedRoutingModule,
-    SharedModule,
-    NgZorroAntdModule
+    SharedModule
   ],
   exports: [WatchedComponent, WatchedMoviesComponent, WatchedShowsComponent],
 })

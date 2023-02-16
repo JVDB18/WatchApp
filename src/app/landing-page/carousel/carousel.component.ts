@@ -10,18 +10,10 @@ import { Show } from 'src/app/show';
     `
       [nz-carousel-content] {
         text-align: center;
-        line-height: 60px;
-        background: transparent;
+        height: 80vh;
+        background: #12151B;
         color: #fff;
         overflow: hidden;
-        max-height: fit-content;
-      }
-
-      h3 {
-        color: #fff;
-      }
-      button {
-        margin-left: -40px;
       }
     `
   ]
@@ -33,14 +25,14 @@ export class CarouselComponent implements OnInit {
   formatMovie: string = "movie";
 
   constructor() { }
- 
+
   ngOnInit() {
-    
+
     console.log(this.response.length)
         for(let i = 0; i< this.response.length; i++){
           console.log(this.response[i])
         }
-    
+
   }
 
 }

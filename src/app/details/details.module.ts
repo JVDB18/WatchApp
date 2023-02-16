@@ -5,7 +5,6 @@ import { ShowDetailsComponent } from './show-details/show-details.component';
 import { DetailsComponent } from './details/details.component';
 import { SharedModule } from '../shared/shared.module';
 import { DetailsRoutingModule } from './details-routing.module';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ActorDetailsComponent } from './actor-details/actor-details.component';
 import { SeasonsComponent } from './show-details/seasons/seasons.component';
@@ -17,7 +16,6 @@ import { EpisodesComponent } from './show-details/seasons/episodes/episodes.comp
     CommonModule,
     SharedModule,
     DetailsRoutingModule,
-    NgZorroAntdModule,
     NgxPaginationModule
   ],
   exports: [ShowDetailsComponent, MovieDetailsComponent, DetailsRoutingModule, ActorDetailsComponent]

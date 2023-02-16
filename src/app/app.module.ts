@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +15,10 @@ import { SharedModule } from './shared/shared.module';
 import { SearchComponent } from './components/search/search.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CarouselComponent } from './landing-page/carousel/carousel.component';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { fr_FR } from 'ng-zorro-antd/i18n';
+import fr from '@angular/common/locales/fr';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 
 
 
@@ -34,14 +37,16 @@ registerLocaleData(en);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NzCarouselModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
-  bootstrap: [AppComponent], 
+  providers: [
+    { provide: NZ_I18N, useValue: fr_FR }
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

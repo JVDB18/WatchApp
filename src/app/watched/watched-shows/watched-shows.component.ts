@@ -19,12 +19,11 @@ path: string = "history"
   ngOnInit() {
     this.getWatchedShows(this.formatTrakt);
     console.log(this.format);
-    
+
 
   }
   getWatchedShows(path){
     this.traktService.getWatched(path).pipe(tap()).subscribe(res => {
-      this.shows = res; 
-      console.log(this.shows)})
+      this.shows = res;})
   }
 }
