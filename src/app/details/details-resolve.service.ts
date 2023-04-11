@@ -9,9 +9,9 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class DetailsResolveService implements Resolve<Movie[]> {
-  constructor(private traktService: TraktService, private router: Router) { }
-  resolve(route: import("@angular/router").ActivatedRouteSnapshot, state: import("@angular/router").RouterStateSnapshot): Movie[] | import("rxjs").Observable<Movie[]> | Promise<Movie[]> {
-    
+  constructor(private traktService: TraktService) { }
+  resolve(route: import("@angular/router").ActivatedRouteSnapshot): Movie[] | import("rxjs").Observable<Movie[]> | Promise<Movie[]> {
+
     let slug = route.paramMap.get('slug')
     let formatTrakt = route.paramMap.get('formattrakt')
     return this.traktService.getDetailsById(formatTrakt, slug).pipe(

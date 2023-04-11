@@ -19,6 +19,7 @@ showTmdb: string = "tv"
 movieTmdb: string ="movie"
 private searchTerms = new Subject<string>();
 
+
   constructor(private traktService: TraktService, router: Router) {
     router.events.subscribe(event => {
       if(event instanceof NavigationStart){

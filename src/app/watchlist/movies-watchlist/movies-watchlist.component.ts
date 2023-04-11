@@ -20,7 +20,7 @@ formatTrakt: string= 'movies'
 
   getWatchList(format: string){
 
-    return this.traktService.getWatchList(format).pipe(tap(console.log)).subscribe(
+    return this.traktService.getWatchList(format).subscribe(
 
       res => {
               this.watchlist = res;
